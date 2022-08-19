@@ -1,0 +1,31 @@
+//breakpoints
+@mixin sm {
+  @media (min-width: rem(576)) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: rem(768)) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: rem(992)) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (min-width: rem(1200)) {
+    @content;
+  }
+}
+
+@mixin xxl {
+  //1312px
+  @media (min-width: rem(1400)) {
+    @content;
+  }
+}
