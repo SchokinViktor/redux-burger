@@ -1,0 +1,260 @@
+@import "../../scss/variables";
+@import "../../scss/mixins";
+@import "../../scss/functions";
+
+.header {
+  padding: 15px 0;
+  background-color: $black-1;
+
+  &_active {
+    .header__nav-opener {
+      span {
+        opacity: 0;
+      }
+
+      &::before {
+        top: 11px;
+        transform: rotate(45deg);
+      }
+
+      &::after {
+        bottom: 10px;
+        transform: rotate(-45deg);
+      }
+    }
+
+    .header__nav-holder {
+      visibility: visible;
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .header__overlay {
+      display: block;
+    }
+  }
+
+  &__overlay {
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    height: 100vh;
+    background: rgba(9, 9, 9, 0.66);
+    display: none;
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__nav-opener {
+    position: relative;
+    border: none;
+    width: 100%;
+    width: 40px;
+    height: 26px;
+    background-color: transparent;
+    cursor: pointer;
+
+    &::before,
+    &::after,
+    span {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      border-radius: 5px;
+      background-color: $white-1;
+      transition: all 0.2s;
+    }
+
+    &::before {
+      top: 0;
+    }
+
+    span {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &::after {
+      bottom: 0;
+    }
+
+    @include xl {
+      display: none;
+    }
+  }
+
+  &__nav-holder {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    max-width: 250px;
+    width: 100%;
+    height: 100vh;
+    padding: 80px 15px 0;
+    transform: translateX(-100%);
+    transition: all 0.2s;
+    background-color: $black-2;
+
+    @include md {
+      max-width: 350px;
+    }
+
+    @include xl {
+      visibility: visible;
+      opacity: 1;
+      position: static;
+      max-width: none;
+      height: auto;
+      padding: 0;
+      transform: translateX(0);
+      background-color: transparent;
+
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__logo-holder {
+    max-width: 180px;
+    margin-bottom: 20px;
+
+    @include md {
+      max-width: 240px;
+    }
+
+    @include xl {
+      margin: 0 100px 0 0;
+    }
+  }
+
+  &__nav-list {
+    @include xl {
+      display: flex;
+      margin: 0 -40px;
+    }
+  }
+
+  &__nav-item {
+    margin-bottom: 30px;
+
+    @include xl {
+      margin-bottom: 0;
+      padding: 0 40px;
+    }
+  }
+
+  &__nav-link {
+    font-weight: 500;
+    font-size: rem(16);
+    letter-spacing: 0.08em;
+    color: $white-1;
+    text-decoration: none;
+    transition: all 0.1s;
+
+    &_active {
+      position: relative;
+      color: $yellow;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      font-size: rem(16);
+      &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        left: 0;
+        bottom: -8px;
+        background-color: $yellow;
+      }
+
+      @include md {
+        font-size: rem(18);
+      }
+    }
+
+    &:hover {
+      color: $yellow;
+    }
+
+    @include md {
+      font-size: rem(18);
+    }
+  }
+
+  &__cart-btn {
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: $yellow;
+    border-radius: 6px;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+
+    &:hover {
+      box-shadow: $shadow-yellow;
+    }
+
+    @include xl {
+      width: 100%;
+      max-width: 190px;
+      height: auto;
+      justify-content: space-between;
+      padding: 11px 20px;
+    }
+  }
+
+  &__price {
+    display: none;
+
+    @include xl {
+      display: flex;
+      align-items: center;
+      border-right: 3px #434343 solid;
+      padding-right: 15px;
+    }
+  }
+
+  &__price-number {
+    margin-right: 10px;
+    font-weight: 500;
+    color: $black-1;
+  }
+
+  // &__price-icon {
+  // }
+
+  &__cart {
+    display: flex;
+    align-items: center;
+  }
+
+  &__cart-icon {
+    @include xl {
+      margin-right: 10px;
+    }
+  }
+
+  &__cart-number {
+    display: none;
+
+    @include xl {
+      display: block;
+      font-weight: 500;
+      color: $black-1;
+    }
+  }
+}
