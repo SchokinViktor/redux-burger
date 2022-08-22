@@ -1,0 +1,51 @@
+@import "../../scss/variables";
+@import "../../scss/mixins";
+
+.wrapper {
+  position: relative;
+}
+
+.input {
+  font-size: rem(16);
+  width: 100%;
+  padding: 22px 80px;
+  background: $black-1;
+  border: 1px solid #242424;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 40px;
+  color: $white-1;
+  border: $black-1 2px solid;
+  transition: all 0.1s linear;
+
+  &:focus {
+    outline: none;
+    border: $yellow 2px solid;
+  }
+
+  @include md {
+    font-size: rem(18);
+  }
+}
+
+.search_icon {
+  position: absolute;
+  left: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 25px;
+  height: 25px;
+  path {
+    fill: #767676;
+  }
+}
+
+.close_icon {
+  cursor: pointer;
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  path {
+    fill: #767676;
+  }
+}

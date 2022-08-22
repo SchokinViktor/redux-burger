@@ -1,0 +1,29 @@
+@import "../../scss/variables";
+
+.text {
+  cursor: pointer;
+  letter-spacing: 0.08em;
+  color: $white-1;
+}
+
+.sort {
+  font-weight: 600;
+  color: $yellow;
+}
+
+.dropdown {
+  background-color: $black-3;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.list_item {
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: all 0.1s;
+
+  &:hover {
+    color: $yellow;
+  }
+}

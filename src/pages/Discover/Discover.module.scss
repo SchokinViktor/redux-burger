@@ -1,0 +1,43 @@
+@import "../../scss/mixins";
+
+.discover {
+  padding-top: 100px;
+}
+
+.input_holder {
+  margin: 0 auto 65px auto;
+  max-width: 480px;
+  @include xl {
+    margin: 0 0 65px 0;
+  }
+}
+
+.row {
+  margin-bottom: 95px;
+  @include xl {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.filters_holder {
+  margin: 0 auto;
+  width: 200px;
+  margin-bottom: 50px;
+
+  @include md {
+    width: 500px;
+  }
+
+  @include xl {
+    margin: 0;
+  }
+}
+
+.sort_holder {
+  margin: 0 auto;
+
+  @include xl {
+    margin: 0;
+  }
+}
