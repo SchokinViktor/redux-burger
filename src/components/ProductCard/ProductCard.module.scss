@@ -1,0 +1,168 @@
+@import "../../scss/mixins";
+@import "../../scss/variables";
+@import "../../scss/functions";
+
+.wrapper {
+  position: relative;
+  background: linear-gradient(238.33deg, #34363e 0%, #141819 99.32%);
+  border-radius: 15px;
+  padding: 110px 20px 20px;
+  margin-bottom: 80px;
+  max-width: 418px;
+  width: 100%;
+  height: 375px;
+
+  @include xl {
+    height: 380px;
+  }
+}
+
+.img_holder {
+  position: absolute;
+  max-width: 188px;
+  top: -55px;
+  left: 0;
+
+  @include xl {
+    max-width: 210px;
+  }
+}
+
+.heart_holder {
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  background-color: $black-2;
+  border-radius: 50%;
+  padding: 23px;
+  border: 2px solid $black-2;
+  transition: all 0.1s;
+  &:hover {
+    border: 2px solid $red;
+  }
+}
+
+.active_heart {
+  background-color: $black-2;
+}
+
+.heart_icon {
+  top: 52%;
+  left: 50%;
+  width: 25px;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  path {
+    fill: $white-1;
+  }
+}
+
+.counter_holder {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.title {
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: $white-1;
+  margin-bottom: 5px;
+  max-width: 200px;
+  height: 50px;
+
+  @include sm {
+    max-width: 270px;
+  }  
+
+  @include xl {
+    font-size: rem(20);
+    height: 60px;
+    max-width: 290px;
+  }
+
+  @include xxl {
+    font-size: rem(24);
+  }
+}
+
+.description {
+  font-size: rem(14);
+  color: $white-2;
+  max-width: 190px;
+  margin-bottom: 35px;
+  height: 96px;
+
+  @include md {
+    max-width: 260px;
+  }
+
+  @include xl {
+    font-size: rem(16);
+  }
+}
+
+.card_footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.total {
+}
+
+.total_text {
+  font-weight: 600;
+  font-size: rem(16);
+  color: $white-1;
+  margin-bottom: 8px;
+
+  @include xxl {
+    font-size: rem(18);
+  }
+}
+
+.total_price {
+  font-weight: 600;
+  font-size: rem(20);
+  color: $yellow;
+
+  @include xxl {
+    font-size: rem(24);
+  }
+}
+
+.uah_icon {
+  width: 12px;
+  height: 16px;
+  path {
+    fill: $yellow;
+  }
+}
+
+.btn {
+  cursor: pointer;
+  color: $white-1;
+  padding: 15px;
+  font-weight: 600;
+  font-size: rem(14);
+  border: none;
+  background: #141819;
+  border-radius: 18px;
+  transition: all 0.1s;
+
+  &:hover {
+    box-shadow: $shadow-yellow;
+    background-color: $yellow;
+  }
+
+  &:active {
+    background-color: $orange;
+  }
+
+  @include xl {
+    font-size: rem(18);
+  }
+}

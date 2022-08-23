@@ -5,11 +5,8 @@
 }
 
 .input_holder {
-  margin: 0 auto 65px auto;
+  margin-bottom: 65px;
   max-width: 480px;
-  @include xl {
-    margin: 0 0 65px 0;
-  }
 }
 
 .row {
@@ -21,23 +18,29 @@
 }
 
 .filters_holder {
-  margin: 0 auto;
   width: 200px;
   margin-bottom: 50px;
 
   @include md {
     width: 500px;
   }
+}
+
+.burger_list {
+  display: grid;
+  grid-gap: 20px;
+  justify-content: space-between;
+  grid-template-columns: 1fr ;
+  @include md {
+    grid-template-columns: 1fr 1fr;
+  }
 
   @include xl {
-    margin: 0;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
-.sort_holder {
-  margin: 0 auto;
-
-  @include xl {
-    margin: 0;
-  }
+.burger_item {
+  display: flex;
+  justify-content: center;
 }

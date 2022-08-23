@@ -27,7 +27,7 @@ const Sort = () => {
   const [sortType, setSortType] = React.useState('price ACS')
 
   return (
-    <div>
+    <div className={styles.wrapper}>
       <span
         className={styles.text}
         onClick={() => setDropdownActive(!dropdownActive)}
