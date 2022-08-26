@@ -1,0 +1,44 @@
+@import "../../scss/variables";
+@import "../../scss/functions";
+@import "../../scss/variables";
+
+@mixin paginationItem {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 0 10px;
+}
+
+@mixin paginationLink {
+  cursor: pointer;
+  background-color: $black-2;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  padding: 10px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  margin: 0 -15px;
+}
+
+.page_item,
+.next_item,
+.previous_item {
+  @include paginationItem();
+}
+
+.page_link,
+.previous_link,
+.next_link {
+  @include paginationLink();
+}
+
+.page_active {
+  background-color: $yellow;
+}
+

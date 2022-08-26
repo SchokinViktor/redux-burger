@@ -1,45 +1,30 @@
 import React from "react";
 
+import { useSelector, useDispatch } from "react-redux";
+import { changeFilter } from "../../redux/slices/filtersSlice";
+
 import styles from "./Filters.module.scss";
 
-const Filters = () => {
-  const types = [
-    {
-      id: 1,
-      name: "All",
-    },
-    {
-      id: 2,
-      name: "BBQ",
-    },
-    {
-      id: 3,
-      name: "Vegetarian",
-    },
-    {
-      id: 4,
-      name: "Chiken",
-    },
-    {
-      id: 5,
-      name: "Fish",
-    },
-  ];
+const Filters = ({filterTypes}) => {
+  const filterType = useSelector((state) => state.filtersReducer.typeName);
+  const dispatch = useDispatch();
 
-  const [activeType, setActiveType] = React.useState("all");
+  const onFilterChange = (typeName) => {
+    dispatch(changeFilter(typeName));
+  };
 
   return (
     <ul className={styles.list}>
-      {types.map((item) => {
+      {filterTypes.map((item) => {
         return (
           <li
             key={item.id}
             className={
-              activeType === item.name.toLowerCase()
+              filterType === item.name.toLowerCase()
                 ? `${styles.type} ${styles.active}`
                 : styles.type
             }
-            onClick={() => setActiveType(item.name.toLowerCase())}
+            onClick={() => onFilterChange(item.name.toLowerCase())}
           >
             {item.name}
           </li>

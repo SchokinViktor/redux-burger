@@ -41,6 +41,10 @@
   &:hover {
     border: 2px solid $red;
   }
+
+  &:active {
+    background-color: $black-3;
+  }
 }
 
 .active_heart {
@@ -108,9 +112,6 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-}
-
-.total {
 }
 
 .total_text {

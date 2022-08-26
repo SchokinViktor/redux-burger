@@ -24,7 +24,6 @@
 }
 
 @mixin xxl {
-  //1312px
   @media (min-width: 1400px) {
     @content;
   }

@@ -1,7 +1,9 @@
 @import "../../scss/mixins";
+@import "../../scss/functions";
+@import "../../scss/variables";
 
 .discover {
-  padding-top: 100px;
+  padding: 100px 0;
 }
 
 .input_holder {
@@ -10,7 +12,7 @@
 }
 
 .row {
-  margin-bottom: 95px;
+  margin-bottom: 35px;
   @include xl {
     display: flex;
     justify-content: space-between;
@@ -26,11 +28,18 @@
   }
 }
 
+.list_title {
+  font-weight: 600;
+  font-size: rem(42);
+  color: $white-1;
+  margin-bottom: 95px;
+}
+
 .burger_list {
   display: grid;
   grid-gap: 20px;
   justify-content: space-between;
-  grid-template-columns: 1fr ;
+  grid-template-columns: 1fr;
   @include md {
     grid-template-columns: 1fr 1fr;
   }
@@ -43,4 +52,8 @@
 .burger_item {
   display: flex;
   justify-content: center;
+}
+
+.pagination_holder {
+  
 }

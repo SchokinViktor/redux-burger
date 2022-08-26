@@ -5,6 +5,15 @@ import Icon from "../icons/Icon";
 import Counter from "../Counter/Counter";
 
 const ProductCard = ({ name, description, imageUrl, price, type, weight }) => {
+  const [counter, setCounter] = React.useState(1);
+
+  const addCounter = () => {
+    counter !== 30 && setCounter(counter + 1);
+  };
+  const removeCounter = () => {
+    counter !== 1 && setCounter(counter - 1);
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.img_holder}>
@@ -14,7 +23,11 @@ const ProductCard = ({ name, description, imageUrl, price, type, weight }) => {
         <Icon name='heart' className={styles.heart_icon} />
       </div>
       <div className={styles.counter_holder}>
-        <Counter/>
+        <Counter
+          counter={counter}
+          onClickAdd={addCounter}
+          onClickRemove={removeCounter}
+        />
       </div>
       <div className={styles.title}>
         {name} <span className={styles.weight}>({weight}g)</span>
@@ -24,7 +37,7 @@ const ProductCard = ({ name, description, imageUrl, price, type, weight }) => {
         <div className={styles.total}>
           <div className={styles.total_text}>Total price</div>
           <div className={styles.total_price}>
-            {price} <Icon name='uah' className={styles.uah_icon} />
+            {(price * counter).toFixed(2)} <Icon name='uah' className={styles.uah_icon} />
           </div>
         </div>
         <button className={styles.btn}>Buy now</button>

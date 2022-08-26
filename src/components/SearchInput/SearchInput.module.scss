@@ -39,12 +39,18 @@
   }
 }
 
-.close_icon {
+.clear_btn {
   cursor: pointer;
   position: absolute;
   right: 30px;
   top: 50%;
   transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+}
+
+.close_icon {
+
   path {
     fill: #767676;
   }
