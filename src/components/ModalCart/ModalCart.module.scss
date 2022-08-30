@@ -1,0 +1,177 @@
+@import "../../scss/mixins";
+@import "../../scss/variables";
+@import "../../scss/functions";
+
+.cart {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.2s;
+  text-align: center;
+
+  @include md {
+    text-align: left;
+  }
+}
+
+.cart.active {
+  opacity: 1;
+  pointer-events: all;
+
+  .cart_content {
+    transform: scale(1);
+  }
+}
+
+.cart_content {
+  border-radius: 15px;
+  background-color: #34363e;
+  width: 100%;
+  height: 570px;
+
+  transform: scale(0);
+  transition: all 0.2s;
+
+  @include md {
+    max-width: 680px;
+  }
+
+  @include xl {
+    max-width: 880px;
+    height: 680px;
+  }
+
+  @include xxl {
+    max-width: 990px;
+  }
+}
+
+.cart_header {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  background-color: $black-1;
+  top: 0;
+  z-index: 1;
+}
+
+.title {
+  font-weight: 600;
+  font-size: rem(26);
+  letter-spacing: 0.08em;
+  color: $white-1;
+}
+
+.close_button,
+.clear_button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.close_icon,
+.trash_icon {
+  path {
+    fill: $white-1;
+  }
+}
+
+.cart_body {
+  padding: 30px 15px;
+  white-space: nowrap;
+  overflow: auto;
+  height: 370px;
+  @include xl {
+    padding: 30px;
+    height: 460px;
+  }
+}
+
+.cart_list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.list_item {
+  margin-bottom: 20px;
+  &:last-child {
+    margin: 0;
+  }
+}
+
+.cart_footer {
+  padding: 20px 15px;
+  @include xl {
+    padding: 30px;
+  }
+}
+
+.total_price {
+  font-weight: 600;
+  font-size: rem(24);
+  color: $white-1;
+  margin-bottom: 20px;
+}
+
+.price {
+  color: $yellow;
+}
+
+.price_icon {
+  height: 20px;
+
+  path {
+    fill: $yellow;
+  }
+}
+
+.checkout_button {
+  background-color: $yellow;
+  border-radius: 18px;
+  border: none;
+  font-weight: 600;
+  font-size: rem(18);
+  color: $white-1;
+  transition: all 0.1s;
+  padding: 10px 20px;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: $shadow-yellow;
+  }
+
+  &:active {
+    background-color: $orange;
+  }
+
+  @include xl {
+    padding: 15px 35px;
+    font-size: rem(24);
+  }
+}
+
+.empty {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 600;
+  line-height: 60px;
+  font-size: rem(42);
+
+  @include xl {
+    font-size: rem(64);
+    line-height: 80px;
+  }
+}

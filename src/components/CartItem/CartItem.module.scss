@@ -1,0 +1,67 @@
+@import "../../scss/functions";
+@import "../../scss/variables";
+@import "../../scss/mixins";
+
+.wrapper {
+  text-align: center;
+
+  @include md {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+  }
+}
+
+.img_holder {
+  width: 150px;
+  margin: 0 auto 15px;
+
+  @include md {
+    margin: 0 0 15px;
+  }
+}
+
+.info {
+  @include md {
+    width: 170px;
+  }
+}
+
+.name {
+  font-weight: 600;
+  color: $white-1;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-weight: 600;
+  font-size: rem(24);
+  color: $yellow;
+  margin-bottom: 15px;
+}
+
+.counter_wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.remove_button {
+  cursor: pointer;
+  padding: 15px 35px;
+  font-weight: 600;
+  color: $white-1;
+  border: none;
+  background-color: $red;
+  border-radius: 18px;
+  transition: all 0.1s;
+
+  &:hover {
+    box-shadow: $shadow-red;
+  }
+
+  &:active {
+    background-color: #dc2947;
+  }
+}

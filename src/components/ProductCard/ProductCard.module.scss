@@ -28,39 +28,39 @@
   }
 }
 
-.heart_holder {
-  cursor: pointer;
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  background-color: $black-2;
-  border-radius: 50%;
-  padding: 23px;
-  border: 2px solid $black-2;
-  transition: all 0.1s;
-  &:hover {
-    border: 2px solid $red;
-  }
+// .heart_holder {
+//   cursor: pointer;
+//   position: absolute;
+//   right: 20px;
+//   top: 20px;
+//   background-color: $black-2;
+//   border-radius: 50%;
+//   padding: 23px;
+//   border: 2px solid $black-2;
+//   transition: all 0.1s;
+//   &:hover {
+//     border: 2px solid $red;
+//   }
 
-  &:active {
-    background-color: $black-3;
-  }
-}
+//   &:active {
+//     background-color: $black-3;
+//   }
+// }
 
-.active_heart {
-  background-color: $black-2;
-}
+// .active_heart {
+//   background-color: $black-2;
+// }
 
-.heart_icon {
-  top: 52%;
-  left: 50%;
-  width: 25px;
-  transform: translate(-50%, -50%);
-  position: absolute;
-  path {
-    fill: $white-1;
-  }
-}
+// .heart_icon {
+//   top: 52%;
+//   left: 50%;
+//   width: 25px;
+//   transform: translate(-50%, -50%);
+//   position: absolute;
+//   path {
+//     fill: $white-1;
+//   }
+// }
 
 .counter_holder {
   position: absolute;
@@ -79,7 +79,7 @@
 
   @include sm {
     max-width: 270px;
-  }  
+  }
 
   @include xl {
     font-size: rem(20);

@@ -3,7 +3,7 @@ import React from "react";
 import SearchIcon from "./SearchIcon";
 import CloseIcon from "./CloseIcon";
 import HeartIcon from "./HeartIcon";
-import UahIcon from "./UahIcon";
+import TrashIcon from "./TrashIcon";
 
 const Icon = (props) => {
   switch (props.name.toLowerCase()) {
@@ -13,8 +13,8 @@ const Icon = (props) => {
       return <CloseIcon {...props} />;
     case "heart":
       return <HeartIcon {...props} />;
-    case "uah":
-      return <UahIcon {...props} />;
+    case "trash":
+      return <TrashIcon {...props} />;
     default:
       return <div></div>;
   }
