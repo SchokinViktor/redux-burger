@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  typeName: "all",
+  filterType: "all",
   searchValue: "",
   sortId: 0,
   currentPageNumber: 1,
@@ -12,7 +12,7 @@ const filtersSlice = createSlice({
   initialState,
   reducers: {
     changeFilter(state, action) {
-      state.typeName = action.payload;
+      state.filterType = action.payload;
     },
     changeSort(state, action) {
       state.sortId = action.payload;

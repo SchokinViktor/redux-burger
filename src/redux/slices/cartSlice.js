@@ -1,9 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  isModalActive: true,
+  isModalActive: false,
   cartItems: [],
   totalPrice: 0,
+};
+
+const refreshTotalPrice = (state) => {
+  state.totalPrice = state.cartItems.reduce((sum, item) => {
+    return sum + item.price * item.counter;
+  }, 0);
 };
 
 const filtersSlice = createSlice({
@@ -25,17 +31,13 @@ const filtersSlice = createSlice({
         });
       }
 
-      state.totalPrice = state.cartItems.reduce((sum, item) => {
-        return sum + item.price * item.counter;
-      }, 0);
+      refreshTotalPrice(state);
     },
     removeFromCart(state, action) {
       state.cartItems = state.cartItems.filter(
         (item) => item.id !== action.payload
       );
-      state.totalPrice = state.cartItems.reduce((sum, item) => {
-        return sum + item.price * item.counter;
-      }, 0);
+      refreshTotalPrice(state);
     },
     decrement(state, action) {
       const findItem = state.cartItems.find(
@@ -44,9 +46,7 @@ const filtersSlice = createSlice({
       if (findItem) {
         findItem.counter--;
       }
-      state.totalPrice = state.cartItems.reduce((sum, item) => {
-        return sum + item.price * item.counter;
-      }, 0);
+      refreshTotalPrice(state);
     },
     clearAll(state) {
       state.cartItems = [];

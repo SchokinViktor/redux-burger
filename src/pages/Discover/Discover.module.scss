@@ -58,3 +58,13 @@
   display: flex;
   justify-content: center;
 }
+
+.error, 
+.empty {
+  text-align: center;
+  font-size: rem(48);
+  font-weight: 600;
+  @include md {
+    font-size: rem(64);
+  }
+}

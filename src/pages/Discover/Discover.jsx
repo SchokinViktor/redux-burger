@@ -2,6 +2,7 @@ import React from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 import { changePageNumber } from "../../redux/slices/filtersSlice";
+import { fetchProducts } from "../../redux/slices/productsSlice";
 
 import styles from "./Discover.module.scss";
 import SearchInput from "../../components/SearchInput/SearchInput";
@@ -58,46 +59,52 @@ const sortTypes = [
 ];
 
 const Discover = () => {
-  const [isLoading, setIsLoading] = React.useState(true);
-  const [productsData, setProductsData] = React.useState([]);
-  const [itemsCount, setItemsCount] = React.useState(0);
-
+  const [actualProductsNumber, setActualProductsNumber] = React.useState(0);
   const dispatch = useDispatch();
-  const filterType = useSelector((state) => state.filtersReducer.typeName);
-  const sortId = useSelector((state) => state.filtersReducer.sortId);
-  const searchValue = useSelector((state) => state.filtersReducer.searchValue);
-  const currentPage = useSelector(
-    (state) => state.filtersReducer.currentPageNumber
+  const { productsData, status, productsCount } = useSelector(
+    (state) => state.productsReducer
+  );
+  const { filterType, sortId, searchValue, currentPageNumber } = useSelector(
+    (state) => state.filtersReducer
   );
 
-  const filterBy = filterType !== "all" ? filterType : "";
-  const sortBy = sortTypes[sortId].name;
-  const order = sortTypes[sortId].property.toLowerCase();
-
-  const url = `https://63034f6d9eb72a839d7d7b58.mockapi.io/menu?page=${currentPage}&limit=${6}${
-    filterBy ? `&type=${filterBy}` : ""
-  }&name=${searchValue}&sortBy=${sortBy}&order=${order}`;
+  const filterBy = filterType !== "all" ? filterType : "",
+    sortBy = sortTypes[sortId].name,
+    order = sortTypes[sortId].property.toLowerCase();
 
   React.useEffect(() => {
-    setIsLoading(true);
-    const fetchData = async () => {
-      await fetch(url)
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          setProductsData(data.items);
-          setItemsCount(data.count);
-          setIsLoading(false);
-        });
-    };
-    fetchData();
-  }, [filterType, sortBy, currentPage, searchValue]);
+    dispatch(
+      fetchProducts({ filterBy, sortBy, order, searchValue, currentPageNumber })
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filterType, sortBy, currentPageNumber, searchValue]);
 
   React.useEffect(() => {
     dispatch(changePageNumber(1));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterType, sortBy, searchValue]);
 
+  const sekeletons = [...new Array(6)].map((_, index) => {
+    return <CardSkeleton key={index} />;
+  });
+
+  const products = () => {
+    return productsData
+      .filter((item) => {
+        if (item.name.toLowerCase().includes(searchValue.toLowerCase())) {
+          return true;
+        }
+        return false;
+      })
+      .map((item) => {
+        return (
+          <li key={item.id} className={styles.burger_item}>
+            <ProductCard {...item} />
+          </li>
+        );
+      });
+  };
+  console.log(actualProductsNumber);
   return (
     <section className={styles.discover}>
       <div className='container'>
@@ -112,40 +119,23 @@ const Discover = () => {
             <Sort sortTypes={sortTypes} />
           </div>
         </div>
-
         <div className={styles.list_title}>{filterBy ? filterBy : "All"}</div>
-        {!isLoading ? (
-          <ul className={styles.burger_list}>
-            {productsData
-              .filter((item) => {
-                if (
-                  item.name.toLowerCase().includes(searchValue.toLowerCase())
-                ) {
-                  return true;
-                }
-                return false;
-              })
-              .map((item) => {
-                return (
-                  <li key={item.id} className={styles.burger_item}>
-                    <ProductCard {...item} />
-                  </li>
-                );
-              })}
-          </ul>
+        {status === "error" ? (
+          <div className={styles.error}>Loading Error 😵</div>
         ) : (
           <ul className={styles.burger_list}>
-            {productsData.map((item) => {
-              return (
-                <li key={item.id} className={styles.burger_item}>
-                  <CardSkeleton />
-                </li>
-              );
-            })}
+            {status === "loading" ? (
+              sekeletons
+            ) : !productsCount ? (
+              <div className={styles.empty}>There is no such burger 😥💔🍔</div>
+            ) : (
+              products()
+            )}
           </ul>
         )}
+
         <div className={styles.pagination_holder}>
-          <Pagination itemsCount={itemsCount} />
+          <Pagination itemsCount={productsCount} />
         </div>
       </div>
     </section>
