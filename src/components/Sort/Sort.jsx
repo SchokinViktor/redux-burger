@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { changeSort } from "../../redux/slices/filtersSlice";
+import { changeSort, selectFilters } from "../../redux/slices/filtersSlice";
 
 import styles from "./Sort.module.scss";
 
@@ -9,7 +9,7 @@ const Sort = ({ sortTypes }) => {
   const [dropdownActive, setDropdownActive] = React.useState(false);
   const sortRef = React.useRef();
 
-  const sortId = useSelector((state) => state.filtersReducer.sortId);
+  const {sortId} = useSelector(selectFilters);
   const dispatch = useDispatch();
 
   const onSortChange = (sortName) => {

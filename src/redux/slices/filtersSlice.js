@@ -26,6 +26,8 @@ const filtersSlice = createSlice({
   },
 });
 
+export const selectFilters = (state) => state.filtersReducer
+
 export default filtersSlice.reducer;
 export const { changeFilter, changeSort, changeSearchValue, changePageNumber } =
   filtersSlice.actions;

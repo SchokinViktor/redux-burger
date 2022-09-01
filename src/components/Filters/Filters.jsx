@@ -1,12 +1,12 @@
 import React from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { changeFilter } from "../../redux/slices/filtersSlice";
+import { changeFilter, selectFilters } from "../../redux/slices/filtersSlice";
 
 import styles from "./Filters.module.scss";
 
-const Filters = ({filterTypes}) => {
-  const filterType = useSelector((state) => state.filtersReducer.filterType);
+const Filters = ({ filterTypes }) => {
+  const { filterType } = useSelector(selectFilters);
   const dispatch = useDispatch();
 
   const onFilterChange = (typeName) => {

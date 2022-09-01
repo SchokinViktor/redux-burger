@@ -1,16 +1,13 @@
-import React from "react";
-import ReactPaginate from "react-paginate";
+import React from 'react';
+import ReactPaginate from 'react-paginate';
 
-import { changePageNumber } from "../../redux/slices/filtersSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { changePageNumber } from '../../redux/slices/filtersSlice';
+import { useDispatch } from 'react-redux';
 
-import styles from "./Pagination.module.scss";
+import styles from './Pagination.module.scss';
 
 const Pagination = ({ itemsCount }) => {
   const dispatch = useDispatch();
-  const currentPage = useSelector(
-    (state) => state.filtersReducer.currentPageNumber
-  );
 
   const onPageChange = (pageNumber) => {
     dispatch(changePageNumber(pageNumber));

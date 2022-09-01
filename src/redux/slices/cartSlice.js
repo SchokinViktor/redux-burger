@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   isModalActive: false,
@@ -13,16 +13,14 @@ const refreshTotalPrice = (state) => {
 };
 
 const filtersSlice = createSlice({
-  name: "cart",
+  name: 'cart',
   initialState,
   reducers: {
     setModalActive(state, action) {
       state.isModalActive = action.payload;
     },
     addToCart(state, action) {
-      const findItem = state.cartItems.find(
-        (obj) => obj.id === action.payload.id
-      );
+      const findItem = state.cartItems.find((obj) => obj.id === action.payload.id);
       if (findItem) {
         findItem.counter += action.payload.counter;
       } else {
@@ -34,15 +32,11 @@ const filtersSlice = createSlice({
       refreshTotalPrice(state);
     },
     removeFromCart(state, action) {
-      state.cartItems = state.cartItems.filter(
-        (item) => item.id !== action.payload
-      );
+      state.cartItems = state.cartItems.filter((item) => item.id !== action.payload);
       refreshTotalPrice(state);
     },
     decrement(state, action) {
-      const findItem = state.cartItems.find(
-        (obj) => obj.id === action.payload.id
-      );
+      const findItem = state.cartItems.find((obj) => obj.id === action.payload.id);
       if (findItem) {
         findItem.counter--;
       }
@@ -55,11 +49,8 @@ const filtersSlice = createSlice({
   },
 });
 
+export const selectCart = (state) => state.cartReducer;
+
 export default filtersSlice.reducer;
-export const {
-  setModalActive,
-  addToCart,
-  removeFromCart,
-  decrement,
-  clearAll,
-} = filtersSlice.actions;
+export const { setModalActive, addToCart, removeFromCart, decrement, clearAll } =
+  filtersSlice.actions;

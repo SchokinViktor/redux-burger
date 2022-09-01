@@ -1,17 +1,18 @@
 import React from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { setModalActive, clearAll } from "../../redux/slices/cartSlice";
+import {
+  setModalActive,
+  clearAll,
+  selectCart,
+} from "../../redux/slices/cartSlice";
 
 import styles from "./ModalCart.module.scss";
 import Icon from "../icons/Icon";
 import CartItem from "../CartItem/CartItem";
 
 const ModalCart = () => {
-  const cartState = useSelector((state) => state.cartReducer);
-  const isModalActive = cartState.isModalActive,
-    totalPrice = cartState.totalPrice,
-    cartItems = cartState.cartItems;
+  const { isModalActive, totalPrice, cartItems } = useSelector(selectCart);
   const dispatch = useDispatch();
 
   const toggleModalCart = () => {
