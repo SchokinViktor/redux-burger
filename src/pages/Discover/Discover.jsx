@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { changePageNumber, selectFilters } from '../../redux/slices/filtersSlice';
+import { selectFilters } from '../../redux/slices/filtersSlice';
 import { fetchProducts } from '../../redux/slices/productsSlice';
 
 import styles from './Discover.module.scss';
@@ -61,8 +61,7 @@ const sortTypes = [
 const Discover = () => {
   const dispatch = useDispatch();
 
-  const { productsData, status, productsCount } = 
-  useSelector((state) => state.productsReducer);
+  const { productsData, status, productsCount } = useSelector((state) => state.productsReducer);
   const { filterType, sortId, searchValue, currentPageNumber } = useSelector(selectFilters);
 
   const filterBy = filterType !== 'all' ? filterType : '',
@@ -73,11 +72,6 @@ const Discover = () => {
     dispatch(fetchProducts({ filterBy, sortBy, order, searchValue, currentPageNumber }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterType, sortBy, currentPageNumber, searchValue]);
-
-  React.useEffect(() => {
-    dispatch(changePageNumber(1));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filterType, sortBy, searchValue]);
 
   const sekeletons = [...new Array(6)].map((_, index) => {
     return <CardSkeleton key={index} />;

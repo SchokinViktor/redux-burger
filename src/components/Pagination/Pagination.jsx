@@ -1,17 +1,23 @@
 import React from 'react';
 import ReactPaginate from 'react-paginate';
 
-import { changePageNumber } from '../../redux/slices/filtersSlice';
-import { useDispatch } from 'react-redux';
+import { changePageNumber, selectFilters } from '../../redux/slices/filtersSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 import styles from './Pagination.module.scss';
 
 const Pagination = ({ itemsCount }) => {
+  const { filterType, searchValue, currentPageNumber } = useSelector(selectFilters);
   const dispatch = useDispatch();
 
   const onPageChange = (pageNumber) => {
+    console.log('change');
     dispatch(changePageNumber(pageNumber));
   };
+
+  React.useEffect(() => {
+    onPageChange(1);
+  }, [filterType, searchValue]);
 
   return (
     <ReactPaginate
@@ -19,7 +25,8 @@ const Pagination = ({ itemsCount }) => {
       nextLabel='>'
       onPageChange={(event) => onPageChange(event.selected + 1)}
       pageRangeDisplayed={5}
-      pageCount={Math.round(itemsCount / 6)}
+      forcePage={currentPageNumber - 1}
+      pageCount={Math.ceil(itemsCount / 6)}
       previousLabel='<'
       renderOnZeroPageCount={null}
       containerClassName={styles.wrapper}
