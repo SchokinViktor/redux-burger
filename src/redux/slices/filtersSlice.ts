@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { FilterTypeEnum } from '../../components/Filters/Filters';
 import { RootState } from '../store';
 
 interface IFilterSliceState {
@@ -9,7 +10,7 @@ interface IFilterSliceState {
 }
 
 const initialState: IFilterSliceState = {
-  filterType: 'all',
+  filterType: FilterTypeEnum.ALL,
   searchValue: '',
   sortId: 0,
   currentPageNumber: 1,

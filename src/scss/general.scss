@@ -6,7 +6,7 @@ html {
 
   ::-webkit-scrollbar-thumb {
     background-color: $black-3;
-    border-radius: 10px;
+    border-radius: 2px;
   }
 
   ::-webkit-scrollbar-track {
@@ -28,5 +28,5 @@ body {
 }
 
 main {
-  padding-top: 200px;
+  padding: 200px 0 100px;
 }

@@ -1,4 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { getCartFromLS } from '../../utils/getCartFromLS';
+import { refreshTotalPrice } from '../../utils/refreshTotalPrice';
 import { RootState } from '../store';
 
 export type TCartItem = {
@@ -10,22 +12,18 @@ export type TCartItem = {
   imageUrl?: string;
 };
 
-interface ICartSliceState {
+export interface ICartSliceState {
   isModalActive: boolean;
   cartItems: TCartItem[];
   totalPrice: number;
 }
 
+const cartData = getCartFromLS();
+
 const initialState: ICartSliceState = {
   isModalActive: false,
-  cartItems: [],
-  totalPrice: 0,
-};
-
-const refreshTotalPrice = (state: ICartSliceState) => {
-  state.totalPrice = state.cartItems.reduce((sum, item) => {
-    return sum + item.price * item.counter;
-  }, 0);
+  cartItems: cartData.items,
+  totalPrice: cartData.totalPrice,
 };
 
 const filtersSlice = createSlice({
@@ -45,18 +43,18 @@ const filtersSlice = createSlice({
         });
       }
 
-      refreshTotalPrice(state);
+      state.totalPrice = refreshTotalPrice(state.cartItems);
     },
     removeFromCart(state, action: PayloadAction<number>) {
       state.cartItems = state.cartItems.filter((item) => item.id !== action.payload);
-      refreshTotalPrice(state);
+      state.totalPrice = refreshTotalPrice(state.cartItems);
     },
     decrement(state, action: PayloadAction<TCartItem>) {
       const findItem = state.cartItems.find((obj) => obj.id === action.payload.id);
       if (findItem) {
         findItem.counter--;
       }
-      refreshTotalPrice(state);
+      state.totalPrice = refreshTotalPrice(state.cartItems);
     },
     clearAll(state) {
       state.cartItems = [];

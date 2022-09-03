@@ -7,7 +7,7 @@ import { fetchProducts, selectProducts, TProduct } from '../../redux/slices/prod
 
 import styles from './Discover.module.scss';
 import SearchInput from '../../components/SearchInput/SearchInput';
-import Filters from '../../components/Filters/Filters';
+import Filters, { FilterTypeEnum } from '../../components/Filters/Filters';
 import Sort from '../../components/Sort/Sort';
 import { sortTypes } from '../../components/Sort/Sort';
 import ProductCard from '../../components/ProductCard/ProductCard';
@@ -20,7 +20,7 @@ const Discover = () => {
   const { productsData, status, productsCount } = useSelector(selectProducts);
   const { filterType, sortId, searchValue, currentPageNumber } = useSelector(selectFilters);
 
-  const filterBy = filterType !== 'all' ? filterType : '',
+  const filterBy = filterType !== FilterTypeEnum.ALL ? filterType : '',
     sortBy = sortTypes[sortId].name,
     order = sortTypes[sortId].property.toLowerCase();
 

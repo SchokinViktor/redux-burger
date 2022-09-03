@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -16,12 +17,21 @@ const Header: React.FC = () => {
     headerActive === 'header' ? setHeaderActive('header header_active') : setHeaderActive('header');
   };
 
-  const { isModalActive, totalPrice } = useSelector(selectCart);
+  const { isModalActive, totalPrice, cartItems } = useSelector(selectCart);
   const dispatch = useDispatch();
 
   const toggleModalCart = () => {
     dispatch(setModalActive(!isModalActive));
   };
+
+  const isMounted = React.useRef(false);
+  React.useEffect(() => {
+    if (isMounted.current) {
+      const json = JSON.stringify(cartItems);
+      localStorage.setItem('cart', json);
+    }
+    isMounted.current = true;
+  }, [cartItems]);
 
   return (
     <>

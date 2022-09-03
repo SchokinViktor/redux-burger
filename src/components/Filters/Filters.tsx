@@ -4,9 +4,9 @@ import { changeFilter, selectFilters } from '../../redux/slices/filtersSlice';
 
 import styles from './Filters.module.scss';
 
-enum SelectFilterType {
+export enum FilterTypeEnum {
   ALL = 'All',
-  BBQ = 'Bbq',
+  BBQ = 'BBQ',
   VEGETARIAN = 'Vegetarian',
   CHIKEN = 'Chiken',
   FISH = 'Fish',
@@ -14,29 +14,29 @@ enum SelectFilterType {
 
 type TfilterType = {
   id: number;
-  name: SelectFilterType;
+  name: FilterTypeEnum;
 };
 
 const filterTypes: TfilterType[] = [
   {
     id: 0,
-    name: SelectFilterType.ALL,
+    name: FilterTypeEnum.ALL,
   },
   {
     id: 1,
-    name: SelectFilterType.BBQ,
+    name: FilterTypeEnum.BBQ,
   },
   {
     id: 2,
-    name: SelectFilterType.VEGETARIAN,
+    name: FilterTypeEnum.VEGETARIAN,
   },
   {
     id: 3,
-    name: SelectFilterType.CHIKEN,
+    name: FilterTypeEnum.CHIKEN,
   },
   {
     id: 4,
-    name: SelectFilterType.FISH,
+    name: FilterTypeEnum.FISH,
   },
 ];
 
@@ -44,7 +44,7 @@ const Filters: React.FC = () => {
   const { filterType } = useSelector(selectFilters);
   const dispatch = useDispatch();
 
-  const onFilterChange = React.useCallback((typeName: SelectFilterType) => {
+  const onFilterChange = React.useCallback((typeName: FilterTypeEnum) => {
     dispatch(changeFilter(typeName));
   }, []);
 
@@ -59,7 +59,7 @@ const Filters: React.FC = () => {
                 ? `${styles.type} ${styles.active}`
                 : styles.type
             }
-            onClick={() => onFilterChange(item.name.toLowerCase() as SelectFilterType)}>
+            onClick={() => onFilterChange(item.name as FilterTypeEnum)}>
             {item.name}
           </li>
         );
