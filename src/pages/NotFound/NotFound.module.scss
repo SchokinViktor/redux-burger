@@ -1,0 +1,40 @@
+@import '../../scss/mixins';
+@import '../../scss/variables';
+@import '../../scss/functions';
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.status {
+  font-size: rem(120);
+  font-weight: 600;
+  text-shadow: $shadow-yellow;
+  color: $yellow;
+  margin-bottom: 35px;
+
+  @include md {
+    font-size: rem(180);
+  }
+
+  @include xxl {
+    font-size: rem(240);
+  }
+}
+
+.text {
+  font-size: rem(28);
+  font-weight: 500;
+
+  @include md {
+    font-size: rem(36);
+  }
+
+  @include xl {
+    font-size: rem(48);
+  }
+}
