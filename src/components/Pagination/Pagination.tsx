@@ -6,18 +6,22 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import styles from './Pagination.module.scss';
 
-const Pagination = ({ itemsCount }) => {
-  const { filterType, searchValue, currentPageNumber } = useSelector(selectFilters);
+type TPagination = {
+  itemsCount: number;
+};
+
+const Pagination: React.FC<TPagination> = ({ itemsCount }) => {
+  const { filterType, searchValue, sortId, currentPageNumber } = useSelector(selectFilters);
   const dispatch = useDispatch();
 
-  const onPageChange = (pageNumber) => {
+  const onPageChange = (pageNumber: number) => {
     console.log('change');
     dispatch(changePageNumber(pageNumber));
   };
 
   React.useEffect(() => {
     onPageChange(1);
-  }, [filterType, searchValue]);
+  }, [filterType, searchValue, sortId]);
 
   return (
     <ReactPaginate
@@ -28,7 +32,6 @@ const Pagination = ({ itemsCount }) => {
       forcePage={currentPageNumber - 1}
       pageCount={Math.ceil(itemsCount / 6)}
       previousLabel='<'
-      renderOnZeroPageCount={null}
       containerClassName={styles.wrapper}
       pageClassName={styles.page_item}
       pageLinkClassName={styles.page_link}

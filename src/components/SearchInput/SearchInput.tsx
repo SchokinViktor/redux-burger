@@ -1,38 +1,40 @@
-import React from "react";
+import React from 'react';
 
-import { useDispatch } from "react-redux";
-import { changeSearchValue } from "../../redux/slices/filtersSlice";
+import { useDispatch } from 'react-redux';
+import { changeSearchValue } from '../../redux/slices/filtersSlice';
 
-import styles from "./SearchInput.module.scss";
-import Icon from "../icons/Icon";
+import styles from './SearchInput.module.scss';
+import Icon from '../icons/Icon';
 
-const SearchInput = ({ placeholder = "Search" }) => {
-  const inputRef = React.useRef();
-  const [value, setValue] = React.useState("");
+type SearchInputProps = { placeholder: string };
+
+const SearchInput: React.FC<SearchInputProps> = ({ placeholder = 'Search' }) => {
+  const inputRef = React.useRef<HTMLInputElement>(null);
+  const [value, setValue] = React.useState('');
   const dispatch = useDispatch();
- 
-  const debounce = (fn, wait) => {
-    let timeout;
-    return (...arg) => {
+
+  const debounce = (fn: any, wait: number) => {
+    let timeout: ReturnType<typeof setTimeout>;
+    return (...arg: any[]) => {
       clearTimeout(timeout);
       timeout = setTimeout(() => fn(...arg), wait);
     };
   };
 
   const updateSearchValue = React.useCallback(
-    debounce((value) => dispatch(changeSearchValue(value)), 500),
-    []
+    debounce((value: string) => dispatch(changeSearchValue(value)), 500),
+    [],
   );
 
-  const onChangeInput = (event) => {
+  const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
     updateSearchValue(event.target.value);
   };
 
   const onClickClear = () => {
-    setValue("");
-    dispatch(changeSearchValue(""));
-    inputRef.current.focus();
+    setValue('');
+    dispatch(changeSearchValue(''));
+    inputRef.current?.focus();
   };
 
   return (
@@ -50,8 +52,7 @@ const SearchInput = ({ placeholder = "Search" }) => {
           className={styles.clear_btn}
           onClick={() => {
             onClickClear();
-          }}
-        >
+          }}>
           <Icon name='close' className={styles.close_icon} />
         </button>
       )}

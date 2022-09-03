@@ -1,13 +1,30 @@
-import React from "react";
+import React from 'react';
 
-import { useDispatch } from "react-redux";
-import { addToCart } from "../../redux/slices/cartSlice";
+import { useDispatch } from 'react-redux';
+import { addToCart, TCartItem } from '../../redux/slices/cartSlice';
 
-import styles from "./ProductCard.module.scss";
-import Counter from "../Counter/Counter";
+import styles from './ProductCard.module.scss';
+import Counter from '../Counter/Counter';
+import { TProduct } from '../../redux/slices/productsSlice';
 
-const ProductCard = ({ id, name, description, imageUrl, price, weight }) => {
-  const [counter, setCounter] = React.useState(1);
+type ProductCartProps = {
+  id: number;
+  price: number;
+  weight: number;
+  name: string;
+  description: string;
+  imageUrl: string;
+};
+
+const ProductCard: React.FC<ProductCartProps> = ({
+  id,
+  name,
+  description,
+  imageUrl,
+  price,
+  weight,
+}) => {
+  const [counter, setCounter] = React.useState<number>(1);
   const addCounter = () => {
     counter !== 30 && setCounter(counter + 1);
   };
@@ -17,7 +34,7 @@ const ProductCard = ({ id, name, description, imageUrl, price, weight }) => {
 
   const dispatch = useDispatch();
   const addObjectToCart = () => {
-    const cartObject = {
+    const cartObject: TCartItem = {
       id,
       name,
       weight,
@@ -41,6 +58,7 @@ const ProductCard = ({ id, name, description, imageUrl, price, weight }) => {
       </div>
       <div className={styles.counter_holder}>
         <Counter
+          flex={false}
           counter={counter}
           onClickAdd={addCounter}
           onClickRemove={removeCounter}

@@ -1,11 +1,10 @@
-import React from "react";
 import { Route, Routes } from "react-router-dom";
 
 import "./scss/index.scss";
 import Layout from "./layout/Layout";
 import Discover from "./pages/Discover/Discover";
-import CustomBurger from "./pages/CustomBurger";
-import NotFound from "./pages/NotFound";
+import CustomBurger from "./pages/CustomBurger/CustomBurger";
+import NotFound from "./pages/NotFound/NotFound";
 
 const App = () => {
   return (
