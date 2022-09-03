@@ -26,10 +26,10 @@ const ProductCard: React.FC<ProductCartProps> = ({
 }) => {
   const [counter, setCounter] = React.useState<number>(1);
   const addCounter = () => {
-    counter !== 30 && setCounter(counter + 1);
+    setCounter(counter + 1);
   };
   const removeCounter = () => {
-    counter !== 1 && setCounter(counter - 1);
+    setCounter(counter - 1);
   };
 
   const dispatch = useDispatch();
@@ -60,6 +60,8 @@ const ProductCard: React.FC<ProductCartProps> = ({
         <Counter
           flex={false}
           counter={counter}
+          minCount = {1}
+          maxCount = {30}
           onClickAdd={addCounter}
           onClickRemove={removeCounter}
         />

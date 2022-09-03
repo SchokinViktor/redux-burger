@@ -30,6 +30,8 @@ const CartItem: React.FC<TCartItem> = ({ id, counter, name, imageUrl, price }) =
       <div className={styles.counter_wrapper}>
         <Counter
           flex={true}
+          minCount={1}
+          maxCount={30}
           counter={counter}
           onClickAdd={() => onClickIncrement()}
           onClickRemove={() => onClickDecrement()}
