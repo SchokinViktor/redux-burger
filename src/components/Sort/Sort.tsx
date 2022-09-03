@@ -51,9 +51,9 @@ const Sort: React.FC = () => {
   const { sortId } = useSelector(selectFilters);
   const dispatch = useDispatch();
 
-  const onSortChange = (sortName: number) => {
+  const onSortChange = React.useCallback((sortName: number) => {
     dispatch(changeSort(sortName));
-  };
+  }, []);
 
   React.useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {

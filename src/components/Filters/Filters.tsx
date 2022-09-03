@@ -1,3 +1,4 @@
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeFilter, selectFilters } from '../../redux/slices/filtersSlice';
 
@@ -43,9 +44,9 @@ const Filters: React.FC = () => {
   const { filterType } = useSelector(selectFilters);
   const dispatch = useDispatch();
 
-  const onFilterChange = (typeName: SelectFilterType) => {
+  const onFilterChange = React.useCallback((typeName: SelectFilterType) => {
     dispatch(changeFilter(typeName));
-  };
+  }, []);
 
   return (
     <ul className={styles.list}>

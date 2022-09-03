@@ -15,7 +15,6 @@ const Pagination: React.FC<TPagination> = ({ itemsCount }) => {
   const dispatch = useDispatch();
 
   const onPageChange = (pageNumber: number) => {
-    console.log('change');
     dispatch(changePageNumber(pageNumber));
   };
 

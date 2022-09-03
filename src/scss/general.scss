@@ -1,3 +1,7 @@
+html {
+  overflow-y: scroll;
+}
+
 body {
   background: linear-gradient(270deg, $black-2 0%, $black-3 60%);
   font-size: rem(18);

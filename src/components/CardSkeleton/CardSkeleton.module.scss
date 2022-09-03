@@ -1,19 +1,7 @@
-@import "../../scss/mixins";
-
 .wrapper {
-  width: 320px;
-
-  @include md {
-    width: 420px;
-  }
+  width: 100%;
 }
 
 .rect {
-  width: 370px;
-  height: 430px;
-
-  @include md {
-    width: 397;
-    height: 380px;
-  }
+  width: 100%;
 }
