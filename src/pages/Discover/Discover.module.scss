@@ -1,10 +1,6 @@
-@import "../../scss/mixins";
-@import "../../scss/functions";
-@import "../../scss/variables";
-
-.discover {
-  padding: 100px 0;
-}
+@import '../../scss/mixins';
+@import '../../scss/functions';
+@import '../../scss/variables';
 
 .input_holder {
   margin-bottom: 65px;
@@ -59,7 +55,7 @@
   justify-content: center;
 }
 
-.error, 
+.error,
 .empty {
   text-align: center;
   font-size: rem(48);
