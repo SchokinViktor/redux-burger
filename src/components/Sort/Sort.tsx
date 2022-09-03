@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { changeSort, selectFilters } from '../../redux/slices/filtersSlice';
+import { changeSort } from '../../redux/slices/filtersSlice/filtersSlice';
+import { selectFilters } from '../../redux/slices/filtersSlice/selectors';
 
 import styles from './Sort.module.scss';
 

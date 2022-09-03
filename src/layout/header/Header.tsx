@@ -2,13 +2,15 @@ import React from 'react';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { selectCart, setModalActive } from '../../redux/slices/cartSlice';
+import { setModalActive } from '../../redux/slices/cartSlice/cartSlice';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
+import { selectCart } from '../../redux/slices/cartSlice/selectors';
 
 import './header.scss';
 import LogoImg from '../../assets/img/logo.png';
 import CartIcon from '../../assets/icons/cart.svg';
 import ModalCart from '../../components/ModalCart/ModalCart';
+
 
 const Header: React.FC = () => {
   const [headerActive, setHeaderActive] = useState('header');

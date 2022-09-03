@@ -1,8 +1,10 @@
-import { addToCart, removeFromCart, decrement, TCartItem } from '../../redux/slices/cartSlice';
+import { addToCart, removeFromCart, decrement } from '../../redux/slices/cartSlice/cartSlice';
 import { useDispatch } from 'react-redux';
+import { TCartItem } from '../../redux/slices/cartSlice/types';
 
 import Counter from '../Counter/Counter';
 import styles from './CartItem.module.scss';
+
 
 const CartItem: React.FC<TCartItem> = ({ id, counter, name, imageUrl, price }) => {
   const dispatch = useDispatch();

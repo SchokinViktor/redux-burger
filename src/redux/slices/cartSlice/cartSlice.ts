@@ -1,22 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getCartFromLS } from '../../utils/getCartFromLS';
-import { refreshTotalPrice } from '../../utils/refreshTotalPrice';
-import { RootState } from '../store';
-
-export type TCartItem = {
-  id: number;
-  weight?: number;
-  price: number;
-  counter: number;
-  name?: string;
-  imageUrl?: string;
-};
-
-export interface ICartSliceState {
-  isModalActive: boolean;
-  cartItems: TCartItem[];
-  totalPrice: number;
-}
+import { getCartFromLS } from '../../../utils/getCartFromLS';
+import { refreshTotalPrice } from '../../../utils/refreshTotalPrice';
+import { TCartItem, ICartSliceState } from './types';
 
 const cartData = getCartFromLS();
 
@@ -62,8 +47,6 @@ const filtersSlice = createSlice({
     },
   },
 });
-
-export const selectCart = (state: RootState) => state.cartReducer;
 
 export default filtersSlice.reducer;
 export const { setModalActive, addToCart, removeFromCart, decrement, clearAll } =

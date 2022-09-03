@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useDispatch } from 'react-redux';
-import { changeSearchValue } from '../../redux/slices/filtersSlice';
+import { changeSearchValue } from '../../redux/slices/filtersSlice/filtersSlice';
 
 import styles from './SearchInput.module.scss';
 import Icon from '../icons/Icon';

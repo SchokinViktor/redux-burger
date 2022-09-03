@@ -1,13 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { FilterTypeEnum } from '../../components/Filters/Filters';
-import { RootState } from '../store';
+import { FilterTypeEnum } from '../../../components/Filters/Filters';
+import { RootState } from '../../store';
+import { IFilterSliceState } from './types';
 
-interface IFilterSliceState {
-  filterType: string;
-  searchValue: string;
-  sortId: number;
-  currentPageNumber: number;
-}
 
 const initialState: IFilterSliceState = {
   filterType: FilterTypeEnum.ALL,
@@ -34,8 +29,6 @@ const filtersSlice = createSlice({
     },
   },
 });
-
-export const selectFilters = (state: RootState) => state.filtersReducer;
 
 export default filtersSlice.reducer;
 export const { changeFilter, changeSort, changeSearchValue, changePageNumber } =

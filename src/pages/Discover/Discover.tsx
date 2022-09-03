@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { useSelector } from 'react-redux';
-import { selectFilters } from '../../redux/slices/filtersSlice';
+import { selectFilters } from '../../redux/slices/filtersSlice/selectors';
 import { useAppDispatch } from '../../redux/store';
-import { fetchProducts, selectProducts, TProduct } from '../../redux/slices/productsSlice';
+import { fetchProducts } from '../../redux/slices/productsSlice/asyncActions';
 
 import styles from './Discover.module.scss';
 import SearchInput from '../../components/SearchInput/SearchInput';
@@ -13,6 +13,8 @@ import { sortTypes } from '../../components/Sort/Sort';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import Pagination from '../../components/Pagination/Pagination';
 import CardSkeleton from '../../components/CardSkeleton/CardSkeleton';
+import { selectProducts } from '../../redux/slices/productsSlice/selectors';
+import { TProduct } from '../../redux/slices/productsSlice/types';
 
 const Discover = () => {
   const dispatch = useAppDispatch();

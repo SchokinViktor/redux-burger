@@ -1,11 +1,11 @@
 import React from 'react';
 
 import { useDispatch } from 'react-redux';
-import { addToCart, TCartItem } from '../../redux/slices/cartSlice';
+import { addToCart } from '../../redux/slices/cartSlice/cartSlice';
+import { TCartItem } from '../../redux/slices/cartSlice/types';
 
 import styles from './ProductCard.module.scss';
 import Counter from '../Counter/Counter';
-import { TProduct } from '../../redux/slices/productsSlice';
 
 type ProductCartProps = {
   id: number;
@@ -60,8 +60,8 @@ const ProductCard: React.FC<ProductCartProps> = ({
         <Counter
           flex={false}
           counter={counter}
-          minCount = {1}
-          maxCount = {30}
+          minCount={1}
+          maxCount={30}
           onClickAdd={addCounter}
           onClickRemove={removeCounter}
         />

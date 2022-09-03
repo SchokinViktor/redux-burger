@@ -1,15 +1,12 @@
-import React from "react";
+import React from 'react';
 
-import { useSelector, useDispatch } from "react-redux";
-import {
-  setModalActive,
-  clearAll,
-  selectCart,
-} from "../../redux/slices/cartSlice";
+import { useSelector, useDispatch } from 'react-redux';
+import { setModalActive, clearAll } from '../../redux/slices/cartSlice/cartSlice';
+import { selectCart } from '../../redux/slices/cartSlice/selectors';
 
-import styles from "./ModalCart.module.scss";
-import Icon from "../icons/Icon";
-import CartItem from "../CartItem/CartItem";
+import styles from './ModalCart.module.scss';
+import Icon from '../icons/Icon';
+import CartItem from '../CartItem/CartItem';
 
 const ModalCart = () => {
   const { isModalActive, totalPrice, cartItems } = useSelector(selectCart);
@@ -25,18 +22,14 @@ const ModalCart = () => {
 
   React.useEffect(() => {
     if (isModalActive) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = "";
+      document.body.style.overflow = '';
     }
   }, [isModalActive]);
 
   return (
-    <div
-      className={
-        isModalActive ? `${styles.cart} ${styles.active}` : styles.cart
-      }
-    >
+    <div className={isModalActive ? `${styles.cart} ${styles.active}` : styles.cart}>
       <div className={styles.cart_content}>
         <div className={styles.cart_header}>
           <div className={styles.title}>Your order</div>
@@ -45,10 +38,7 @@ const ModalCart = () => {
               <Icon name='trash' className={styles.trash_icon} />
             </button>
           )}
-          <button
-            className={styles.close_button}
-            onClick={() => toggleModalCart()}
-          >
+          <button className={styles.close_button} onClick={() => toggleModalCart()}>
             <Icon name='close' className={styles.close_icon} />
           </button>
         </div>
@@ -67,8 +57,7 @@ const ModalCart = () => {
             </div>
             <div className={styles.cart_footer}>
               <div className={styles.total_price}>
-                Total price{" "}
-                <span className={styles.price}>{totalPrice.toFixed(2)}₴</span>
+                Total price <span className={styles.price}>{totalPrice.toFixed(2)}₴</span>
               </div>
               <button className={styles.checkout_button}>Checkout</button>
             </div>
