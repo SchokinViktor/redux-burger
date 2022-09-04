@@ -56,7 +56,7 @@ const Filters: React.FC = () => {
           <li
             key={item.id}
             className={
-              filterType === item.name.toLowerCase()
+              filterType === item.name
                 ? `${styles.type} ${styles.active}`
                 : styles.type
             }
