@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import './scss/index.scss';
 import Layout from './layout/Layout';
@@ -18,7 +18,7 @@ const App = () => {
           <Route
             path='/custom-burger'
             element={
-              <Suspense fallback={<Loader/>}>
+              <Suspense fallback={<Loader />}>
                 <CustomBurger />
               </Suspense>
             }
@@ -27,7 +27,7 @@ const App = () => {
         <Route
           path='*'
           element={
-            <Suspense fallback={<Loader/>}>
+            <Suspense fallback={<Loader />}>
               <NotFound />
             </Suspense>
           }
