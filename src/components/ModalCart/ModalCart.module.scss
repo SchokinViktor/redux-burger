@@ -1,6 +1,6 @@
-@import "../../scss/mixins";
-@import "../../scss/variables";
-@import "../../scss/functions";
+@import '../../scss/mixins';
+@import '../../scss/variables';
+@import '../../scss/functions';
 
 .cart {
   position: fixed;
@@ -77,10 +77,20 @@
   cursor: pointer;
   background-color: transparent;
   border: none;
+
+  &:hover {
+    .close_icon,
+    .trash_icon {
+      path {
+        fill: $yellow;
+      }
+    }
+  }
 }
 
 .close_icon,
 .trash_icon {
+  transition: all 0.1s;
   path {
     fill: $white-1;
   }
@@ -137,28 +147,7 @@
 }
 
 .checkout_button {
-  background-color: $yellow;
-  border-radius: 18px;
-  border: none;
-  font-weight: 600;
-  font-size: rem(18);
-  color: $white-1;
-  transition: all 0.1s;
-  padding: 10px 20px;
-  cursor: pointer;
-
-  &:hover {
-    box-shadow: $shadow-yellow;
-  }
-
-  &:active {
-    background-color: $orange;
-  }
-
-  @include xl {
-    padding: 15px 35px;
-    font-size: rem(24);
-  }
+  @include button($font-size: 20);
 }
 
 .empty {

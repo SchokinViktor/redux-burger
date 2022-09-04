@@ -1,6 +1,6 @@
-@import "../../scss/variables";
-@import "../../scss/functions";
-@import "../../scss/variables";
+@import '../../scss/variables';
+@import '../../scss/functions';
+@import '../../scss/variables';
 
 @mixin paginationItem {
   display: flex;
@@ -18,6 +18,16 @@
   padding: 10px;
   font-weight: 600;
   color: #ffffff;
+  transition: all 0.1s;
+  border: 2px solid $black-2;
+
+  &:hover {
+    border: 2px solid $yellow;
+  }
+
+  &:active {
+    background-color: $orange;
+  }
 }
 
 .wrapper {
@@ -39,6 +49,21 @@
 }
 
 .page_active {
+  cursor: default;
   background-color: $yellow;
+  border: 2px solid $yellow;
 }
 
+.disabled {
+  cursor: default;
+  background-color: rgba(32, 32, 32, 0.597);
+  border: 2px solid rgba(32, 32, 32, 0.597);
+  box-shadow: none;
+
+  &:hover {
+    border: 2px solid rgba(32, 32, 32, 0.597);
+  }
+  &:active {
+    background-color: rgba(32, 32, 32, 0.597);
+  }
+}

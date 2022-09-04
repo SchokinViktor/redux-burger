@@ -28,3 +28,35 @@
     @content;
   }
 }
+
+//button
+@mixin button(
+  $padding: 15px 35px,
+  $font-size: 16,
+  $color: $white-1,
+  $background-color: $yellow,
+  $box-shadow: $shadow-yellow,
+  $active-background: $orange
+) {
+  cursor: pointer;
+  padding: $padding;
+  font-weight: 600;
+  color: $color;
+  border: none;
+  background-color: $background-color;
+  border-radius: 18px;
+  font-size: rem($font-size);
+  transition: all 0.1s;
+
+  &:hover {
+    box-shadow: $box-shadow;
+  }
+
+  &:active {
+    background-color: $active-background;
+  }
+  
+  @include xl {
+    font-size: rem($font-size + 2);
+  }
+}

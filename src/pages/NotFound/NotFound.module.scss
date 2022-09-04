@@ -29,6 +29,7 @@
 .text {
   font-size: rem(28);
   font-weight: 500;
+  margin-bottom: 30px;
 
   @include md {
     font-size: rem(36);

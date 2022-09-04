@@ -70,15 +70,7 @@ const Discover = () => {
         {status === 'error' ? (
           <div className={styles.error}>Loading Error 😵</div>
         ) : (
-          <ul className={styles.burger_list}>
-            {status === 'loading' ? (
-              sekeletons
-            ) : !productsCount ? (
-              <div className={styles.empty}>There is no such burger 😥💔🍔</div>
-            ) : (
-              products()
-            )}
-          </ul>
+          <ul className={styles.burger_list}>{status === 'loading' ? sekeletons : products()}</ul>
         )}
 
         <div className={styles.pagination_holder}>

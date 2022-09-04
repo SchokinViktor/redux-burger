@@ -1,0 +1,16 @@
+@import '../../scss/functions';
+@import '../../scss/mixins';
+
+.text {
+  font-size: rem(28);
+  font-weight: 500;
+  margin-bottom: 30px;
+
+  @include md {
+    font-size: rem(36);
+  }
+
+  @include xl {
+    font-size: rem(48);
+  }
+}

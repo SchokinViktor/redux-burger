@@ -1,10 +1,14 @@
 import Logo from '../../assets/img/logo.svg';
 import styles from './Loader.module.scss';
 
-const Loader = () => {
+export const LoaderIcon: React.FC = () => {
+  return <img className={styles.loader_icon} src={Logo} alt='logo' />;
+};
+
+const Loader: React.FC = () => {
   return (
     <div className={styles.wrapper}>
-      <img src={Logo} alt='logo' />
+      <LoaderIcon />
     </div>
   );
 };

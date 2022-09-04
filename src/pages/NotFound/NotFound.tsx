@@ -1,4 +1,3 @@
-import Loader from '../../components/Loader/Loader';
 import styles from './NotFound.module.scss';
 
 const NotFound = () => {

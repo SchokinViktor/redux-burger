@@ -16,6 +16,10 @@ const Pagination: React.FC<TPagination> = ({ itemsCount }) => {
   const dispatch = useDispatch();
 
   const onPageChange = (pageNumber: number) => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+  });
     dispatch(changePageNumber(pageNumber));
   };
 
@@ -40,6 +44,7 @@ const Pagination: React.FC<TPagination> = ({ itemsCount }) => {
       nextClassName={styles.next_item}
       previousLinkClassName={styles.previous_link}
       nextLinkClassName={styles.next_link}
+      disabledLinkClassName = {styles.disabled}
     />
   );
 };

@@ -1,6 +1,6 @@
-@import "../../scss/mixins";
-@import "../../scss/variables";
-@import "../../scss/functions";
+@import '../../scss/mixins';
+@import '../../scss/variables';
+@import '../../scss/functions';
 
 .wrapper {
   position: relative;
@@ -144,26 +144,11 @@
 }
 
 .btn {
-  cursor: pointer;
-  color: $white-1;
-  padding: 15px;
-  font-weight: 600;
-  font-size: rem(14);
-  border: none;
-  background: #141819;
-  border-radius: 18px;
-  transition: all 0.1s;
-
+  @include button($padding: 15px, $background-color: #141819);
   &:hover {
-    box-shadow: $shadow-yellow;
     background-color: $yellow;
   }
-
   &:active {
     background-color: $orange;
-  }
-
-  @include xl {
-    font-size: rem(18);
   }
 }
