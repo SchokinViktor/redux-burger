@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/redux-burger/static/css/main.c288eacb.css",
+    "main.js": "/redux-burger/static/js/main.01d593ee.js",
+    "static/css/560.2283587d.chunk.css": "/redux-burger/static/css/560.2283587d.chunk.css",
+    "static/js/560.cc14517a.chunk.js": "/redux-burger/static/js/560.cc14517a.chunk.js",
+    "static/css/579.63c0d046.chunk.css": "/redux-burger/static/css/579.63c0d046.chunk.css",
+    "static/js/579.b19e31a3.chunk.js": "/redux-burger/static/js/579.b19e31a3.chunk.js",
+    "static/media/logo.png": "/redux-burger/static/media/logo.9000f990eda599775e3d.png",
+    "static/media/cart.svg": "/redux-burger/static/media/cart.a6c26ee2d2de500cb71d7f8afcbe2d42.svg",
+    "static/media/logo.svg": "/redux-burger/static/media/logo.901f9b00981fad09a39cb33edbf1a315.svg",
+    "index.html": "/redux-burger/index.html",
+    "main.c288eacb.css.map": "/redux-burger/static/css/main.c288eacb.css.map",
+    "main.01d593ee.js.map": "/redux-burger/static/js/main.01d593ee.js.map",
+    "560.2283587d.chunk.css.map": "/redux-burger/static/css/560.2283587d.chunk.css.map",
+    "560.cc14517a.chunk.js.map": "/redux-burger/static/js/560.cc14517a.chunk.js.map",
+    "579.63c0d046.chunk.css.map": "/redux-burger/static/css/579.63c0d046.chunk.css.map",
+    "579.b19e31a3.chunk.js.map": "/redux-burger/static/js/579.b19e31a3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c288eacb.css",
+    "static/js/main.01d593ee.js"
+  ]
+}

@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkredux_burger=self.webpackChunkredux_burger||[]).push([[579],{579:function(e,u,n){n.r(u),n.d(u,{default:function(){return a}});var r="NotFound_wrapper__ps5Pt",s="NotFound_status__EQ2VE",t="NotFound_text__+B3Dy",d=n(184),a=function(){return(0,d.jsxs)("div",{className:r,children:[(0,d.jsx)("div",{className:s,children:"404"}),(0,d.jsx)("div",{className:t,children:"\ud83d\ude32 Page not found \ud83d\ude32"})]})}}}]);
+//# sourceMappingURL=579.b19e31a3.chunk.js.map
