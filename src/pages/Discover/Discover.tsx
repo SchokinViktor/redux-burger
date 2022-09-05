@@ -18,7 +18,7 @@ import { TProduct } from '../../redux/slices/productsSlice/types';
 
 const Discover = () => {
   const dispatch = useAppDispatch();
-
+  const [filteredLength, setFilteredLength] = React.useState<TProduct[]>([]);
   const { productsData, status, productsCount } = useSelector(selectProducts);
   const { filterType, sortId, searchValue, currentPageNumber } = useSelector(selectFilters);
 
@@ -28,28 +28,30 @@ const Discover = () => {
 
   React.useEffect(() => {
     dispatch(fetchProducts({ filterBy, sortBy, order, searchValue, currentPageNumber }));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterType, sortBy, currentPageNumber, searchValue, order]);
 
   const sekeletons = [...new Array(6)].map((_, index) => {
     return <CardSkeleton key={index} />;
   });
 
+  React.useEffect(() => {
+    const filteredData = productsData.filter((item) => {
+      if (item.name.toLowerCase().includes(searchValue.toLowerCase())) {
+        return true;
+      }
+      return false;
+    });
+    setFilteredLength(filteredData);
+  }, [productsData]);
+
   const products = () => {
-    return productsData
-      .filter((item: TProduct) => {
-        if (item.name.toLowerCase().includes(searchValue.toLowerCase())) {
-          return true;
-        }
-        return false;
-      })
-      .map((item: TProduct) => {
-        return (
-          <li key={item.id} className={styles.burger_item}>
-            <ProductCard {...item} />
-          </li>
-        );
-      });
+    return filteredLength.map((item: TProduct) => {
+      return (
+        <li key={item.id} className={styles.burger_item}>
+          <ProductCard {...item} />
+        </li>
+      );
+    });
   };
 
   return (
@@ -68,14 +70,28 @@ const Discover = () => {
         </div>
         <div className={styles.list_title}>{filterBy ? filterType : 'All'}</div>
         {status === 'error' ? (
-          <div className={styles.error}>Loading Error 😵</div>
+          <div className={styles.error}>
+            Loading Error 😵
+            <br />
+            Try refreshing the page
+          </div>
+        ) : status === 'loading' ? (
+          <ul className={styles.burger_list}> {sekeletons} </ul>
+        ) : filteredLength.length === 0 ? (
+          <div className={styles.empty}>
+            Oppps...
+            <br />
+            There is no such burger 😔💔🍔
+            <br />
+          </div>
         ) : (
-          <ul className={styles.burger_list}>{status === 'loading' ? sekeletons : products()}</ul>
+          <>
+            <ul className={styles.burger_list}> {products()} </ul>
+            <div className={styles.pagination_holder}>
+              <Pagination itemsCount={productsCount} />
+            </div>
+          </>
         )}
-
-        <div className={styles.pagination_holder}>
-          <Pagination itemsCount={productsCount} />
-        </div>
       </div>
     </section>
   );

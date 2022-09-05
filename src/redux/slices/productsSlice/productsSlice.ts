@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 import { fetchProducts } from './asyncActions';
 import { IProductsSliceState, Status } from './types';
 
-
 const initialState: IProductsSliceState = {
   productsData: [],
   productsCount: 0,
@@ -35,7 +34,6 @@ const productsSlice = createSlice({
     });
   },
 });
-
 
 export default productsSlice.reducer;
 export const { setProductsData } = productsSlice.actions;
