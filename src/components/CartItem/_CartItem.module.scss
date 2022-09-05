@@ -3,8 +3,6 @@
 @import '../../scss/mixins';
 
 .wrapper {
-  text-align: center;
-
   @include md {
     display: flex;
     justify-content: space-between;

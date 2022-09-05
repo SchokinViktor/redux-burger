@@ -1,4 +1,4 @@
-import styles from './Counter.module.scss';
+import styles from './_Counter.module.scss';
 
 type CounterProps = {
   flex: boolean;

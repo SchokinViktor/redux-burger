@@ -1,6 +1,6 @@
 import { LoaderIcon } from '../../components/Loader/Loader';
 import NotReady from '../../components/NotReady/NotReady';
-import styles from './CustomBurger.module.scss';
+import styles from './_CustomBurger.module.scss';
 
 const CustomBurger: React.FC = () => {
   return (

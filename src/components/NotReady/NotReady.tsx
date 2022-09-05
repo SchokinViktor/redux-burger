@@ -1,4 +1,4 @@
-import styles from './NotReady.module.scss';
+import styles from './_NotReady.module.scss';
 
 const NotReady: React.FC = () => {
   return (

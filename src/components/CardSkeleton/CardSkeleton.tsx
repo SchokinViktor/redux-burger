@@ -1,6 +1,6 @@
 import ContentLoader from 'react-content-loader';
 
-import styles from './CardSkeleton.module.scss';
+import styles from './_CardSkeleton.module.scss';
 
 const CardSkeleton: React.FC = () => (
   <ContentLoader

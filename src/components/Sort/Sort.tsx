@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeSort } from '../../redux/slices/filtersSlice/filtersSlice';
 import { selectFilters } from '../../redux/slices/filtersSlice/selectors';
 
-import styles from './Sort.module.scss';
+import styles from './_Sort.module.scss';
 
 enum SortProperyEnum {
   ASC = 'ASC',

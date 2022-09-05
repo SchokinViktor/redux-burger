@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { changeFilter } from '../../redux/slices/filtersSlice/filtersSlice';
 import { selectFilters } from '../../redux/slices/filtersSlice/selectors';
 
-import styles from './Filters.module.scss';
+import styles from './_Filters.module.scss';
 
 export enum FilterTypeEnum {
   ALL = 'All',

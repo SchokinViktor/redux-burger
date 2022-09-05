@@ -5,7 +5,7 @@ import { selectFilters } from '../../redux/slices/filtersSlice/selectors';
 import { useAppDispatch } from '../../redux/store';
 import { fetchProducts } from '../../redux/slices/productsSlice/asyncActions';
 
-import styles from './Discover.module.scss';
+import styles from './_Discover.module.scss';
 import SearchInput from '../../components/SearchInput/SearchInput';
 import Filters, { FilterTypeEnum } from '../../components/Filters/Filters';
 import Sort from '../../components/Sort/Sort';

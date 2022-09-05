@@ -6,7 +6,7 @@
   white-space: nowrap;
   overflow: auto;
 
-  @include sm {
+  @include md {
     overflow: hidden;
   }
 }

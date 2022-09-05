@@ -5,7 +5,7 @@ import { changePageNumber } from '../../redux/slices/filtersSlice/filtersSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFilters } from '../../redux/slices/filtersSlice/selectors';
 
-import styles from './Pagination.module.scss';
+import styles from './_Pagination.module.scss';
 
 type TPagination = {
   itemsCount: number;

@@ -28,5 +28,8 @@ body {
 }
 
 main {
-  padding: 200px 0 100px;
+  padding: 130px 0 100px;
+  @include xl {
+    padding: 200px 0 100px;
+  }
 }

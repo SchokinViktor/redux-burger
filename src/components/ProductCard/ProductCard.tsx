@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/slices/cartSlice/cartSlice';
 import { TCartItem } from '../../redux/slices/cartSlice/types';
 
-import styles from './ProductCard.module.scss';
+import styles from './_ProductCard.module.scss';
 import Counter from '../Counter/Counter';
 
 type ProductCartProps = {
