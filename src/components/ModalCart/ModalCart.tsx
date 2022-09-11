@@ -7,6 +7,7 @@ import { selectCart } from '../../redux/slices/cartSlice/selectors';
 import styles from './ModalCart.module.scss';
 import Icon from '../icons/Icon';
 import CartItem from '../CartItem/CartItem';
+import { click } from '@testing-library/user-event/dist/click';
 
 const ModalCart = () => {
   const { isModalActive, totalPrice, cartItems } = useSelector(selectCart);
@@ -28,8 +29,21 @@ const ModalCart = () => {
     }
   }, [isModalActive]);
 
+  const modalRef = React.useRef<HTMLDivElement>(null);
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      console.log(event);
+      if (modalRef.current && event.target === modalRef.current) {
+        dispatch(setModalActive(false));
+      }
+    };
+    document.body.addEventListener('click', handleClickOutside);
+
+    return () => document.body.removeEventListener('click', handleClickOutside);
+  }, []);
+
   return (
-    <div className={isModalActive ? `${styles.cart} ${styles.active}` : styles.cart}>
+    <div ref={modalRef} className={isModalActive ? `${styles.cart} ${styles.active}` : styles.cart}>
       <div className={styles.cart_content}>
         <div className={styles.cart_header}>
           <div className={styles.title}>Your order</div>
