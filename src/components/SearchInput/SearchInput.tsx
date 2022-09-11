@@ -8,7 +8,7 @@ import Icon from '../icons/Icon';
 
 type SearchInputProps = { placeholder: string };
 
-const SearchInput: React.FC<SearchInputProps> = ({ placeholder = 'Search' }) => {
+const SearchInput: React.FC<SearchInputProps> = React.memo(({ placeholder = 'Search' }) => {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [value, setValue] = React.useState('');
   const dispatch = useDispatch();
@@ -58,6 +58,6 @@ const SearchInput: React.FC<SearchInputProps> = ({ placeholder = 'Search' }) => 
       )}
     </div>
   );
-};
+});
 
 export default SearchInput;

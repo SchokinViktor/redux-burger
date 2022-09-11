@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import './scss/index.scss';
 import Layout from './layout/Layout';

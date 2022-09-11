@@ -15,6 +15,7 @@ import Pagination from '../../components/Pagination/Pagination';
 import CardSkeleton from '../../components/CardSkeleton/CardSkeleton';
 import { selectProducts } from '../../redux/slices/productsSlice/selectors';
 import { TProduct } from '../../redux/slices/productsSlice/types';
+import { changePageNumber } from '../../redux/slices/filtersSlice/filtersSlice';
 
 const Discover = () => {
   const dispatch = useAppDispatch();
@@ -43,6 +44,10 @@ const Discover = () => {
     });
     setFilteredLength(filteredData);
   }, [productsData]);
+
+  React.useEffect(() => {
+    dispatch(changePageNumber(1));
+  }, [filterType, searchValue, sortId]);
 
   const products = () => {
     return filteredLength.map((item: TProduct) => {

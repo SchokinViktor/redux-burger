@@ -12,7 +12,7 @@ type TPagination = {
 };
 
 const Pagination: React.FC<TPagination> = ({ itemsCount }) => {
-  const { filterType, searchValue, sortId, currentPageNumber } = useSelector(selectFilters);
+  const { currentPageNumber } = useSelector(selectFilters);
   const dispatch = useDispatch();
 
   const onPageChange = (pageNumber: number) => {
@@ -22,10 +22,6 @@ const Pagination: React.FC<TPagination> = ({ itemsCount }) => {
     });
     dispatch(changePageNumber(pageNumber));
   };
-
-  React.useEffect(() => {
-    onPageChange(1);
-  }, [filterType, searchValue, sortId]);
 
   return (
     <ReactPaginate
